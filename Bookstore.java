@@ -4,15 +4,72 @@ import java.util.Scanner;
 
 public class Bookstore {
 
-    
     static List<Book> getBookCatalog() {
         List<Book> books = new ArrayList<>();
-        
-        books.add(new Book("Fiker Eske Mekabir", "Haddis Alemayehu", "Romance",  1966, 300, 10, 35, 10));
-        books.add(new Book("Oromay",         "Bealu Girma",   "Drama",    1983, 280, 10, 30, 7));
-        books.add(new Book("Ye Mariam Genet","Tesfaye Gessese","Fiction", 1995, 200, 10, 25, 14));
-        books.add(new Book("Alcoholawi Tor", "Sebhat Gebre-Egziabher","Fiction",1998, 220, 10, 25, 10));
+
+        // Novel
+        books.add(new Book("Fiker Eske Mekabir", "Haddis Alemayehu", "Novel", 1966, 300, 50, 35, 10));
+        books.add(new Book("Oromay", "Bealu Girma", "Novel", 1983, 280, 50, 50, 10));
+        books.add(new Book("Ye Mariam Genet", "Tesfaye Gessese", "Novel", 1995, 200, 50, 50, 10));
+        books.add(new Book("Alcoholawi Tor", "Sebhat Gebre-Egziabher", "Novel", 1998, 350, 50, 25, 10));
+
+        // Religion
+        books.add(new Book("The Holy Bible", "Various Authors", "Religion", 2000, 150, 20, 15, 7));
+        books.add(new Book("The Holy Quran", "Various Authors", "Religion", 2000, 150, 20, 15, 7));
+
+        // History
+        books.add(new Book("History of Ethiopia", "Tekletsadik Mekuria", "History", 1960, 250, 30, 20, 10));
+        books.add(new Book("African Civilizations", "John Reader", "History", 1998, 300, 30, 25, 10));
+
+        // Children
+        books.add(new Book("Lij Eyasu", "Kebede Mikael", "Children", 1970, 100, 10, 10, 5));
+        books.add(new Book("The Little Prince", "Antoine de Saint-Exupery", "Children", 1943, 120, 10, 10, 5));
+
+        // Science and Education
+        books.add(new Book("A Brief History of Time", "Stephen Hawking", "Science and Education", 1988, 350, 40, 30, 10));
+        books.add(new Book("Physics for Students", "Yared Abebe", "Science and Education", 2010, 200, 30, 20, 7));
+
+        // Poetry
+        books.add(new Book("Tinbite Shelema", "Tsegaye Gebre-Medhin", "Poetry", 1966, 180, 20, 15, 7));
+        books.add(new Book("Ye Alem Neger", "Bewketu Seyoum", "Poetry", 2008, 200, 20, 15, 7));
+
         return books;
+    }
+
+    static String chooseCategory(Scanner scanner, User currentUser) {
+        System.out.println("\n========== Categories ==========");
+        System.out.println("[1] Religion");
+        System.out.println("[2] History");
+        System.out.println("[3] Novel");
+        System.out.println("[4] Children");
+        System.out.println("[5] Science and Education");
+        System.out.println("[6] Poetry");
+        System.out.println("[F] View my favorites");
+        System.out.println("[0] Exit");
+        System.out.print("Choose a category: ");
+        String choice = scanner.nextLine().trim();
+        switch (choice) {
+            case "1": return "Religion";
+            case "2": return "History";
+            case "3": return "Novel";
+            case "4": return "Children";
+            case "5": return "Science and Education";
+            case "6": return "Poetry";
+            case "0": return "exit";
+            case "F":
+            case "f": return "favorites";
+            default: System.out.println("Invalid choice."); return null;
+        }
+    }
+
+    static List<Book> filterByCategory(List<Book> catalog, String category) {
+        List<Book> filtered = new ArrayList<>();
+        for (Book b : catalog) {
+            if (b.getcategory().equals(category)) {
+                filtered.add(b);
+            }
+        }
+        return filtered;
     }
 
     public static void main(String[] args) {
@@ -25,7 +82,7 @@ public class Bookstore {
         System.out.println("   Welcome to the Bookstore System!");
         System.out.println("========================================");
 
-        
+        // Auth loop
         while (currentUser == null) {
             System.out.println("\n[1] Login");
             System.out.println("[2] Create Account");
@@ -41,33 +98,44 @@ public class Bookstore {
             }
         }
 
-        
+        // Main loop
         boolean running = true;
         while (running) {
-            System.out.println("\n========== Available Books ==========");
-            for (int i = 0; i < catalog.size(); i++) {
-                catalog.get(i).displayInfo(i + 1);
+            String category = null;
+            while (category == null) {
+                category = chooseCategory(scanner, currentUser);
             }
-            System.out.println("[F] View my favorites");
-            System.out.println("[0] Exit");
-            System.out.print("\nSelect a book number: ");
-            String input = scanner.nextLine().trim();
 
-            if (input.equalsIgnoreCase("0")) {
-                System.out.println("Thank you for visiting the bookstore. Goodbye!");
+            if (category.equals("exit")) {
+                System.out.println("Thank you for visiting. Goodbye!");
                 running = false;
-                continue;
+                break;
             }
 
-            if (input.equalsIgnoreCase("F")) {
+            if (category.equals("favorites")) {
                 currentUser.showFavorites();
                 continue;
             }
 
+            List<Book> filtered = filterByCategory(catalog, category);
+            if (filtered.isEmpty()) {
+                System.out.println("No books available in this category yet.");
+                continue;
+            }
+
+            System.out.println("\n========== " + category + " Books ==========");
+            for (int i = 0; i < filtered.size(); i++) {
+                filtered.get(i).displayInfo(i + 1);
+            }
+            System.out.print("\nSelect a book number (or 0 to go back): ");
+            String input = scanner.nextLine().trim();
+
+            if (input.equals("0")) continue;
+
             int bookIndex;
             try {
                 bookIndex = Integer.parseInt(input) - 1;
-                if (bookIndex < 0 || bookIndex >= catalog.size()) {
+                if (bookIndex < 0 || bookIndex >= filtered.size()) {
                     System.out.println("Invalid book number.");
                     continue;
                 }
@@ -76,19 +144,17 @@ public class Bookstore {
                 continue;
             }
 
-            Book selectedBook = catalog.get(bookIndex);
+            Book selectedBook = filtered.get(bookIndex);
             System.out.println("\nYou selected: \"" + selectedBook.getName()
                 + "\" by " + selectedBook.getAuthor());
 
-            
             System.out.println("\nAvailable Services:");
-            System.out.println("[1] Read ");
-            System.out.println("[2] Rent ");
-            System.out.println("[3] Buy  ");
+            System.out.println("[1] Read");
+            System.out.println("[2] Rent");
+            System.out.println("[3] Buy");
             System.out.println("[4] Add to Favorites");
-            System.out.println("[0] Back to catalog");
+            System.out.println("[0] Back to categories");
             System.out.print("Choose the Service you want: ");
-            
 
             String serviceChoice = scanner.nextLine().trim();
             Service service = null;
@@ -102,7 +168,6 @@ public class Bookstore {
                 default:  System.out.println("Invalid choice."); break;
             }
 
-            
             if (service != null) {
                 service.performService();
             }
