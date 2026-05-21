@@ -13,7 +13,7 @@ This system simulates a real bookstore where users can create accounts, browse b
 ## ✨ Features
 
 - **User Authentication** — login or create an account (username, password, email, national ID)
-- **Book Catalog** — browse available books with name, author, type, and year
+- **Book Catalog** — browse available book categories then display the books based on their categories with name, author, type, and year
 - **Read Service** — choose a reading session (30 min, 2 hr, 6 hr+) with optional coffee
 - **Rent Service** — rent a book by the day with maximum rental period validation
 - **Buy Service** — purchase copies with optional delivery
