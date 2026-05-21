@@ -8,10 +8,10 @@ public class Bookstore {
     static List<Book> getBookCatalog() {
         List<Book> books = new ArrayList<>();
         
-        books.add(new Book("Fiker Eske Mekabir", "Haddis Alemayehu", "Romance",  1966, 300, 10, 35, 10));
-        books.add(new Book("Oromay",         "Bealu Girma",   "Drama",    1983, 280, 10, 30, 7));
-        books.add(new Book("Ye Mariam Genet","Tesfaye Gessese","Fiction", 1995, 200, 10, 25, 14));
-        books.add(new Book("Alcoholawi Tor", "Sebhat Gebre-Egziabher","Fiction",1998, 220, 10, 25, 10));
+        books.add(new Book("Fiker Eske Mekabir", "Haddis Alemayehu", "Romance",  1966, 300, 50, 35, 10));
+        books.add(new Book("Oromay",         "Bealu Girma",   "Drama",    1983, 280, 50, 50, 10));
+        books.add(new Book("Ye Mariam Genet","Tesfaye Gessese","Fiction", 1995, 200, 50, 50, 10));
+        books.add(new Book("Alcoholawi Tor", "Sebhat Gebre-Egziabher","Fiction",1998, 350, 50, 25, 10));
         return books;
     }
 
