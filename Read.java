@@ -8,8 +8,8 @@ class Read extends Service {
     @Override
     public void performService() {
         System.out.println("\n--- Read Service ---");
-        System.out.print("choose the reading time: \n 1, 30 min \n 2, 2hr-6hr \n 3, more than 6hr");
-        
+        System.out.print("reading time and price \n 1, 30 min \n 2, 2hr-6hr \n 3, more than 6hr");
+        System.out.print("choose the reading time:");
         int time = Integer.parseInt(scanner.nextLine().trim());
         if (time==1){
             System.out.printf("Price: %.0f birr for 30 min%n", book.getReadPrice());}
