@@ -6,33 +6,11 @@ public class Bookstore {
 
     static List<Book> getBookCatalog() {
         List<Book> books = new ArrayList<>();
-
-        // Novel
-        books.add(new Book("Fiker Eske Mekabir", "Haddis Alemayehu", "Novel", 1966, 300, 50, 35, 10));
-        books.add(new Book("Oromay", "Bealu Girma", "Novel", 1983, 280, 50, 50, 10));
-        books.add(new Book("Ye Mariam Genet", "Tesfaye Gessese", "Novel", 1995, 200, 50, 50, 10));
-        books.add(new Book("Alcoholawi Tor", "Sebhat Gebre-Egziabher", "Novel", 1998, 350, 50, 25, 10));
-
-        // Religion
-        books.add(new Book("The Holy Bible", "Various Authors", "Religion", 2000, 150, 20, 15, 7));
-        books.add(new Book("The Holy Quran", "Various Authors", "Religion", 2000, 150, 20, 15, 7));
-
-        // History
-        books.add(new Book("History of Ethiopia", "Tekletsadik Mekuria", "History", 1960, 250, 30, 20, 10));
-        books.add(new Book("African Civilizations", "John Reader", "History", 1998, 300, 30, 25, 10));
-
-        // Children
-        books.add(new Book("Lij Eyasu", "Kebede Mikael", "Children", 1970, 100, 10, 10, 5));
-        books.add(new Book("The Little Prince", "Antoine de Saint-Exupery", "Children", 1943, 120, 10, 10, 5));
-
-        // Science and Education
-        books.add(new Book("A Brief History of Time", "Stephen Hawking", "Science and Education", 1988, 350, 40, 30, 10));
-        books.add(new Book("Physics for Students", "Yared Abebe", "Science and Education", 2010, 200, 30, 20, 7));
-
-        // Poetry
-        books.add(new Book("Tinbite Shelema", "Tsegaye Gebre-Medhin", "Poetry", 1966, 180, 20, 15, 7));
-        books.add(new Book("Ye Alem Neger", "Bewketu Seyoum", "Poetry", 2008, 200, 20, 15, 7));
-
+        
+        books.add(new Book("Fiker Eske Mekabir", "Haddis Alemayehu", "Romance",  1966, 300, 10, 35, 10));
+        books.add(new Book("Oromay",         "Bealu Girma",   "Drama",    1983, 280, 10, 30, 7));
+        books.add(new Book("Ye Mariam Genet","Tesfaye Gessese","Fiction", 1995, 200, 10, 25, 14));
+        books.add(new Book("Alcoholawi Tor", "Sebhat Gebre-Egziabher","Fiction",1998, 220, 10, 25, 10));
         return books;
     }
 

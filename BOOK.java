@@ -22,7 +22,7 @@ class Book{
     }
     public String getName()              { return name; }
     public String getAuthor()            { return author; }
-    public String getcategory()          { return category; }
+    public String getcategory()              { return category; }
     public int    getYear()              { return year; }
     public double getBuyPrice()          { return buyPrice; }
     public double getReadPrice()         { return readPrice; }
