@@ -12,7 +12,7 @@
             String password = scanner.nextLine().trim();
 
             for (User u : accounts) {
-                if (u.getUsername().equals(username) && u.getPassword().equals(password)) {
+                if (u.getUsername().equals(username) && u.matchesPassword(password)) {
                     System.out.println("Welcome back, " + username + "!");
                     return u;
                 }

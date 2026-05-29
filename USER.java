@@ -16,7 +16,9 @@ class User {
         this.favorites  = new ArrayList<>();
     }
     public String getUsername()  { return username; }
-    public String getPassword()  { return password; }
+    public boolean matchesPassword(String input) {
+        return this.password.equals(input);
+    }
 
     public void addFavorite(Book book) {
         if (!favorites.contains(book)) {
