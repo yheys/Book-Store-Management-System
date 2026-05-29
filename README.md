@@ -1,4 +1,4 @@
-# Bookstore Management System — MVP
+# Bookstore Management System
 
 A console-based bookstore management system built in Java for an Object-Oriented Programming (OOP) class project.
 
