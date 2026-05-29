@@ -30,14 +30,13 @@ class Rent extends Service {
 
         double total = days * book.getRentPrice();
         System.out.printf("Total rental cost: %.0f birr for %d day(s). Enjoy!%n", total, days);
-        System.out.println("\n📋 Rental Instructions:");
-        System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+        System.out.println("\nRental Instructions:");
         System.out.println("1. Please collect your book at the front desk.");
         System.out.println("2. Keep the book in good condition — no folding or tearing pages.");
         System.out.println("3. Return the book within " + days + " day(s).");
         System.out.println("4. Late returns will be charged extra per day.");
         System.out.println("5. Lost or damaged books must be paid for in full.");
-        System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
-        System.out.println("Enjoy reading! 📖");
+        System.out.println(" ");
+        System.out.println("Enjoy reading! ");
     }
 }

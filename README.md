@@ -1,16 +1,16 @@
-# 📚 Bookstore Management System — MVP
+# Bookstore Management System — MVP
 
 A console-based bookstore management system built in Java for an Object-Oriented Programming (OOP) class project.
 
 ---
 
-## 🎯 Project Overview
+## Project Overview
 
 This system simulates a real bookstore where users can create accounts, browse books, and access multiple services such as reading, renting, buying, and saving favorites.
 
 ---
 
-## ✨ Features
+## Features
 
 - **User Authentication** — login or create an account (username, password, email, national ID)
 - **Book Catalog** — browse available book categories then display the books based on their categories with name, author, type, and year
@@ -21,7 +21,7 @@ This system simulates a real bookstore where users can create accounts, browse b
 
 ---
 
-## 🏗️ OOP Concepts Used
+## OOP Concepts Used
 
 | Concept | Where Applied |
 |---|---|
@@ -32,7 +32,7 @@ This system simulates a real bookstore where users can create accounts, browse b
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 BookstoreMVP/
